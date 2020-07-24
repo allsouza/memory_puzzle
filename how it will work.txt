@@ -1,0 +1,76 @@
+Puzzle v1.0
+
+Classes 
+    -Board
+        board limit: 6x6
+        #initialize(size) -> 
+            *Card#make_random_cards send back two of the same cards and we only accept
+            if they are not already in our cards array.
+x  x  x  x
+x  x  x  x
+x  x  x  x
+[] []  x  x
+
+        #populate -> randomly distrubutes card pairs on board
+            iterate thropugh @grid and grab @cards.shuffle and placing at index
+        #render -> shows the grid
+        #won?
+        #reveal
+        @guessed position
+        @grid
+        @card_pairs -> 2d array of card instances
+
+    -Card
+        Card#make_random_cards
+        @face value
+        @face_up?
+        #display -> face down or face_up
+        #hide -> face = false
+        #reveal -> face_up = true
+        #to_s -> prints the card
+        #== -> checks face value
+
+    -Game -> runs everything
+      @previous_guess
+      @over? check is board is won
+      @current guess
+      #initialize (create a board, take in a size)
+      #play
+        #render board
+        #get_guess (from player)
+        #render board with guess revealed
+        #get_guess again
+        #render board with both guesses
+        #check for match?
+          #true: leave revealed
+          #false: leave up for three seconds, then hide
+        #loop until done
+
+    
+    
+
+
+
+Puzzle v2.0
+  -human player
+    -@name
+    -@score
+    -#get_guess
+    -#add_point
+  -computer player
+    -@name
+    -@score
+    -#get_guess -> 
+    -#add_point
+
+
+Puzzle v3.0
+  -computer player AI 
+    -store structure of cards that have been revealed
+      -hash: keys are card position, values are face values
+  -computer #get guess
+    -check if hash has two keys with the same value
+      -true: guess first value, then second 
+      -false: guess one value in hash, then random
+  -#save_card(card, pos)
+    -will save card value and location to hash
